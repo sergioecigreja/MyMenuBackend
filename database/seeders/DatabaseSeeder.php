@@ -3,7 +3,7 @@
 namespace Database\Seeders;
 
 use Illuminate\Database\Seeder;
-
+use App\Models\MenuType;
 class DatabaseSeeder extends Seeder
 {
     /**
@@ -13,6 +13,20 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        // \App\Models\User::factory(10)->create();
+        MenuType::create([
+            'menu_type_name' => 'Entradas',
+        ]);
+        MenuType::create([
+            'menu_type_name' => 'Bebidas',
+        ]);
+        MenuType::create([
+            'menu_type_name' => 'Pratos de Carne',
+        ]);
+        MenuType::create([
+            'menu_type_name' => 'Pratos de Peixe',
+        ]);
+        MenuType::create([
+            'menu_type_name' => 'Sobremesas',
+        ]);
     }
 }
