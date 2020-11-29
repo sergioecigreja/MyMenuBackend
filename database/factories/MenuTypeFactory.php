@@ -21,8 +21,17 @@ class MenuTypeFactory extends Factory
      */
     public function definition()
     {
+
+        $examples = [
+            'Entradas',
+            'Bebidas',
+            'Pratos de Carne',
+            'Pratos de Peixe',
+            'Sobremesas'
+        ];
+
         return [
-            'menu_type_name' => 'Pratos de Peixe',
+            'menu_type_name' => $this->faker->unique()->randomElement($examples),
         ];
     }
 }

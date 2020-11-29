@@ -2,10 +2,10 @@
 
 namespace Database\Seeders;
 
+use App\Models\Menu;
 use Illuminate\Database\Seeder;
-use App\Models\MenuType;
 
-class MenuTypeSeeder extends Seeder
+class MenuSeeder extends Seeder
 {
     /**
      * Run the database seeds.
@@ -14,6 +14,7 @@ class MenuTypeSeeder extends Seeder
      */
     public function run()
     {
-        MenuType::factory()->times(5)->create();
+        //
+        Menu::factory()->times(30)->create();
     }
 }

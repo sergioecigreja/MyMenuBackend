@@ -19,5 +19,5 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-
-Route::resource('menutypes', MenuTypeController::class);
+Route::model('menu_types', 'MenuType');
+Route::resource('menu_types', MenuTypeController::class)->except(['update', 'edit', 'create']);

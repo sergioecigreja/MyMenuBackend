@@ -5,23 +5,23 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class MenuType extends Model
+class Product extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'menu_type_name',
+        'product_name',
+        'product_price',
+        'product_description'
     ];
 
     public function getKeyName()
     {
-        return 'menu_type_id';
+        return 'product_id';
     }
 
     public function getRouteKeyName()
     {
-        return 'menu_type_id';
+        return 'product_id';
     }
-
-    
 }

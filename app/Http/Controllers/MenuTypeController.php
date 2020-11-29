@@ -19,16 +19,6 @@ class MenuTypeController extends Controller
     }
 
     /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
      * Store a newly created resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
@@ -36,51 +26,33 @@ class MenuTypeController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $this->validate($request, array(
+            'menu_type_name' => 'required|max:255'
+        ));
+
+        return MenuType::create($request->all());
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  MenuType  $menu_type
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show(MenuType $menu_type)
     {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
+        return new MenuTypeResource($menu_type);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int  $id
+     * @param  MenuType  $menu_type
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(MenuType $menu_type)
     {
-        //
+        $menu_type->delete();
+        return response()->json(null, 204);
     }
 }

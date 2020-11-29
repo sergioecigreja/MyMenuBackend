@@ -13,20 +13,11 @@ class DatabaseSeeder extends Seeder
      */
     public function run()
     {
-        MenuType::create([
-            'menu_type_name' => 'Entradas',
-        ]);
-        MenuType::create([
-            'menu_type_name' => 'Bebidas',
-        ]);
-        MenuType::create([
-            'menu_type_name' => 'Pratos de Carne',
-        ]);
-        MenuType::create([
-            'menu_type_name' => 'Pratos de Peixe',
-        ]);
-        MenuType::create([
-            'menu_type_name' => 'Sobremesas',
+        $this->call([
+            RestaurantSeeder::class,
+            MenuTypeSeeder::class,
+            MenuSeeder::class,
+            ProductSeeder::class
         ]);
     }
 }
