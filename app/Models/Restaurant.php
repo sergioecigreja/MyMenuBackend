@@ -23,4 +23,9 @@ class Restaurant extends Model
     {
         return 'restaurant_id';
     }
+
+    public function menus()
+    {
+        return $this->hasMany('App\Models\Menu', 'restaurant_id');
+    }
 }

@@ -23,5 +23,4 @@ class MenuType extends Model
         return 'menu_type_id';
     }
 
-    
 }

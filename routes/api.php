@@ -1,8 +1,11 @@
 <?php
 
+use App\Http\Controllers\MenuController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuTypeController;
+use App\Http\Controllers\ProductController;
+use App\Http\Controllers\RestaurantController;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,6 +21,15 @@ use App\Http\Controllers\MenuTypeController;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
-
+//MenuTypes
 Route::model('menu_types', 'MenuType');
 Route::resource('menu_types', MenuTypeController::class)->except(['update', 'edit', 'create']);
+//Restaurant
+Route::model('restaurants', 'Restaurant');
+Route::resource('restaurants', RestaurantController::class)->except(['edit', 'create']);
+//Menu
+Route::model('menus', 'Menu');
+Route::resource('menus', MenuController::class)->except(['edit', 'create', 'update']);
+//Product
+Route::model('products', 'Product');
+Route::resource('products', ProductController::class)->except([ 'edit', 'create']);

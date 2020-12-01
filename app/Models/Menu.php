@@ -23,4 +23,19 @@ class Menu extends Model
     {
         return 'menu_id';
     }
+
+    public function menuType() 
+    {
+        return $this->hasOne('App\Models\MenuType', 'menu_type_id', 'menu_type_id');
+    }
+
+    public function restaurant()
+    {
+        return $this->belongsTo('App\Models\Restaurant', 'restaurant_id');
+    }
+
+    public function products()
+    {
+        return $this->hasMany('App\Models\Product');
+    }
 }
