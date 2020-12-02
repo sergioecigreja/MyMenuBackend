@@ -3,14 +3,18 @@
 namespace App\Http\Controllers;
 
 use App\Http\Requests\RestaurantRequest;
+use App\Http\Resources\MenuResource;
 use App\Http\Resources\RestaurantResource;
 use App\Models\Restaurant;
-use Exception;
-use Illuminate\Contracts\Validation\Validator;
-use Illuminate\Http\Request;
 
 class RestaurantController extends Controller
 {
+
+    public function menus(Restaurant $restaurant)
+    {
+        return MenuResource::collection($restaurant->menus);
+    }
+
     /**
      * Display a listing of the resource.
      *

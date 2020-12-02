@@ -4,11 +4,25 @@ namespace App\Http\Controllers;
 
 use App\Http\Requests\MenuRequest;
 use App\Http\Resources\MenuResource;
+use App\Http\Resources\ProductResource;
 use App\Models\Menu;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
+
+        
+    /**
+     * Returns all the [Product] entries that belong to the given [menu].
+     *
+     * @param  Menu $menu
+     * @return ProductResource collection.
+     */
+    public function products(Menu $menu)
+    {
+        return ProductResource::collection($menu->products);
+    }
+
     /**
      * Display a listing of the resource.
      *

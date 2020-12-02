@@ -36,6 +36,6 @@ class Menu extends Model
 
     public function products()
     {
-        return $this->hasMany('App\Models\Product');
+        return $this->hasMany('App\Models\Product', 'menu_id', 'menu_id');
     }
 }

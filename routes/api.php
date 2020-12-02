@@ -27,9 +27,11 @@ Route::resource('menu_types', MenuTypeController::class)->except(['update', 'edi
 //Restaurant
 Route::model('restaurants', 'Restaurant');
 Route::resource('restaurants', RestaurantController::class)->except(['edit', 'create']);
+Route::get('restaurants/{restaurant}/menus', [RestaurantController::class,  'menus'] );
 //Menu
 Route::model('menus', 'Menu');
 Route::resource('menus', MenuController::class)->except(['edit', 'create', 'update']);
+Route::get('menus/{menu}/products', [MenuController::class, 'products']);
 //Product
 Route::model('products', 'Product');
 Route::resource('products', ProductController::class)->except([ 'edit', 'create']);
