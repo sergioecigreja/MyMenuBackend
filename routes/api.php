@@ -1,11 +1,13 @@
 <?php
 
+use App\Http\Controllers\AuthController;
 use App\Http\Controllers\MenuController;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\MenuTypeController;
 use App\Http\Controllers\ProductController;
 use App\Http\Controllers\RestaurantController;
+use Illuminate\Support\Facades\Auth;
 
 /*
 |--------------------------------------------------------------------------
@@ -18,9 +20,14 @@ use App\Http\Controllers\RestaurantController;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
+Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
+    return response()->json(['message'=>$request->user()]);
 });
+//Token
+Route::middleware('auth:sanctum')->post('token', [AuthController::class, 'getApiToken']);
+Route::middleware('auth:sanctum')->post('user', [AuthController::class, 'registerUser']);
+Route::middleware('auth:sanctum')->post('logout', [AuthController::class, 'logout']);
+
 //MenuTypes
 Route::model('menu_types', 'MenuType');
 Route::resource('menu_types', MenuTypeController::class)->except(['update', 'edit', 'create']);

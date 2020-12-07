@@ -24,6 +24,6 @@ class UserSeeder extends Seeder
             ]);
 
         $root -> save();
-        User::factory()->times(40)->create();
+        User::factory()->times(2)->create();
     }
 }

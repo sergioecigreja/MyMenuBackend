@@ -2,11 +2,11 @@
 
 namespace App\Models;
 
-use Illuminate\Contracts\Auth\MustVerifyEmail;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Illuminate\Notifications\Notifiable;
-use Laravel\Passport\HasApiTokens;
+use Laravel\Sanctum\HasApiTokens;
+use UserTypes;
 
 class User extends Authenticatable
 {
@@ -24,6 +24,18 @@ class User extends Authenticatable
         'user_type_id'
     ];
 
+    public function isRestaurantClient() {
+        return $this->user_type_id == UserTypes::RestaurantClient;
+    }
+
+    public function isRestaurantOwner() {
+        return $this->user_type_id == UserTypes::RestaurantOwner;
+    }
+
+    public function isAdmin() {
+        return $this->user_type_id == UserTypes::Admin;
+    }
+
     public function getKeyName()
     {
         return 'user_id';
@@ -36,6 +48,7 @@ class User extends Authenticatable
     protected $hidden = [
         'user_password',
         'user_remember_token',
+        'user_type_id'
     ];
 
     /**
